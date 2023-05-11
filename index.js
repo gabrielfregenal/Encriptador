@@ -27,10 +27,12 @@ function encriptar(stringEncriptada) {
 }
 
 function btnDesencriptar() {
-    const textoDesencriptado = desencriptar(mensaje.value);
+    const textoEncriptado = textArea.value;
+    const textoDesencriptado = desencriptar(textoEncriptado);
     mensaje.textContent = textoDesencriptado;
     textArea.value = "";
-}
+
+  }
 
 function desencriptar(stringDesencriptada) {
     let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
@@ -39,11 +41,17 @@ function desencriptar(stringDesencriptada) {
     for (let i = 0; i < matrizCodigo.length; i++) {
         if (stringDesencriptada.includes(matrizCodigo[i][1])) {
             stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
+            
         }
     }
     if (stringDesencriptada == "") {
         alert("No ingreso ningún texto");
+        mensaje.style.backgroundImage = "url(imagenes/muñeco.png)";
+
+    }else{
+        mensaje.style.backgroundImage = "none"
     }
+    
     return stringDesencriptada;
 }
 
